@@ -1,0 +1,177 @@
+{
+  "original_url": "https://www.google.com"
+}
+
+{
+  "original_url": "https://www.facebook.com"
+}
+
+{
+  "original_url": "https://www.twitter.com"
+}
+
+{
+  "original_url": "https://www.instagram.com"
+}
+
+{
+  "original_url": "https://www.tiktok.com"
+}
+
+
+"Traceback (most recent call last):
+api-1  |   File "/usr/local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 144, in __init__
+api-1  |     self._dbapi_connection = engine.raw_connection()
+api-1  |                              ^^^^^^^^^^^^^^^^^^^^^^^
+api-1  |   File "/usr/local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 3319, in raw_connection
+api-1  |     return self.pool.connect()
+api-1  |            ^^^^^^^^^^^^^^^^^^^
+api-1  |   File "/usr/local/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 448, in connect
+api-1  |     return _ConnectionFairy._checkout(self)
+api-1  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+api-1  |   File "/usr/local/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 1272, in _checkout
+api-1  |     fairy = _ConnectionRecord.checkout(pool)
+api-1  |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+api-1  |   File "/usr/local/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 712, in checkout
+api-1  |     rec = pool._do_get()
+api-1  |           ^^^^^^^^^^^^^^
+api-1  |   File "/usr/local/lib/python3.12/site-packages/sqlalchemy/pool/impl.py", line 178, in _do_get
+api-1  |     with util.safe_reraise():
+api-1  |          ^^^^^^^^^^^^^^^^^^^
+api-1  |   File "/usr/local/lib/python3.12/site-packages/sqlalchemy/util/langhelpers.py", line 122, in __exit__
+api-1  |     raise exc_value.with_traceback(exc_tb)
+api-1  |   File "/usr/local/lib/python3.12/site-packages/sqlalchemy/pool/impl.py", line 176, in _do_get
+api-1  |     return self._create_connection()
+api-1  |            ^^^^^^^^^^^^^^^^^^^^^^^^^
+api-1  |   File "/usr/local/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 389, in _create_connection
+api-1  |     return _ConnectionRecord(self)
+api-1  |            ^^^^^^^^^^^^^^^^^^^^^^^
+api-1  |   File "/usr/local/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 674, in __init__
+api-1  |     self.__connect()
+api-1  |   File "/usr/local/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 900, in __connect
+api-1  |     with util.safe_reraise():
+api-1  |          ^^^^^^^^^^^^^^^^^^^
+api-1  |   File "/usr/local/lib/python3.12/site-packages/sqlalchemy/util/langhelpers.py", line 122, in __exit__
+api-1  |     raise exc_value.with_traceback(exc_tb)
+api-1  |   File "/usr/local/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 896, in __connect
+api-1  |     self.dbapi_connection = connection = pool._invoke_creator(self)
+api-1  |                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+api-1  |   File "/usr/local/lib/python3.12/site-packages/sqlalchemy/engine/create.py", line 667, in connect
+api-1  |     return dialect.connect(*cargs_tup, **cparams)
+api-1  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+api-1  |   File "/usr/local/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 630, in connect
+api-1  |     return self.loaded_dbapi.connect(*cargs, **cparams)  # type: ignore[no-any-return]  # NOQA: E501
+api-1  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+api-1  |   File "/usr/local/lib/python3.12/site-packages/psycopg2/__init__.py", line 122, in connect
+api-1  |     conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+api-1  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+api-1  | psycopg2.OperationalError: connection to server at "db" (172.19.0.2), port 5432 failed: Connection refused
+api-1  |        Is the server running on that host and accepting TCP/IP connections?
+api-1  | 
+api-1  | 
+api-1  | The above exception was the direct cause of the following exception:
+api-1  | 
+api-1  | Traceback (most recent call last):
+api-1  |   File "/usr/local/bin/uvicorn", line 8, in <module>
+api-1  |     sys.exit(main())
+api-1  |              ^^^^^^
+api-1  |   File "/usr/local/lib/python3.12/site-packages/click/core.py", line 1569, in __call__
+api-1  |     return self.main(*args, **kwargs)
+api-1  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+api-1  |   File "/usr/local/lib/python3.12/site-packages/click/core.py", line 1490, in main
+api-1  |     rv = self.invoke(ctx)
+api-1  |          ^^^^^^^^^^^^^^^^
+api-1  |   File "/usr/local/lib/python3.12/site-packages/click/core.py", line 1353, in invoke
+api-1  |     return ctx.invoke(self.callback, **ctx.params)
+api-1  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+api-1  |   File "/usr/local/lib/python3.12/site-packages/click/core.py", line 907, in invoke
+api-1  |     return callback(*args, **kwargs)
+api-1  |            ^^^^^^^^^^^^^^^^^^^^^^^^^
+api-1  |   File "/usr/local/lib/python3.12/site-packages/uvicorn/main.py", line 441, in main
+api-1  |     run(
+api-1  |   File "/usr/local/lib/python3.12/site-packages/uvicorn/main.py", line 609, in run
+api-1  |     config.load_app()
+api-1  |   File "/usr/local/lib/python3.12/site-packages/uvicorn/config.py", line 415, in load_app
+api-1  |     return import_from_string(self.app)
+api-1  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+api-1  |   File "/usr/local/lib/python3.12/site-packages/uvicorn/importer.py", line 19, in import_from_string
+api-1  |     module = importlib.import_module(module_str)
+api-1  |              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+api-1  |   File "/usr/local/lib/python3.12/importlib/__init__.py", line 90, in import_module
+api-1  |     return _bootstrap._gcd_import(name[level:], package, level)
+api-1  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+api-1  |   File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+api-1  |   File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+api-1  |   File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+api-1  |   File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+api-1  |   File "<frozen importlib._bootstrap_external>", line 999, in exec_module
+api-1  |   File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+api-1  |   File "/app/app/main.py", line 29, in <module>
+api-1  |     Base.metadata.create_all(bind=engine)
+api-1  |   File "/usr/local/lib/python3.12/site-packages/sqlalchemy/sql/schema.py", line 5930, in create_all
+api-1  |     bind._run_ddl_visitor(
+api-1  |   File "/usr/local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 3269, in _run_ddl_visitor
+api-1  |     with self.begin() as conn:
+api-1  |          ^^^^^^^^^^^^
+api-1  |   File "/usr/local/lib/python3.12/contextlib.py", line 137, in __enter__
+api-1  |     return next(self.gen)
+api-1  |            ^^^^^^^^^^^^^^
+api-1  |   File "/usr/local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 3259, in begin
+api-1  |     with self.connect() as conn:
+api-1  |          ^^^^^^^^^^^^^^
+api-1  |   File "/usr/local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 3295, in connect
+api-1  |     return self._connection_cls(self)
+api-1  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+api-1  |   File "/usr/local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 146, in __init__
+api-1  |     Connection._handle_dbapi_exception_noconnection(
+api-1  |   File "/usr/local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2450, in _handle_dbapi_exception_noconnection
+api-1  |     raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+api-1  |   File "/usr/local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 144, in __init__
+api-1  |     self._dbapi_connection = engine.raw_connection()
+api-1  |                              ^^^^^^^^^^^^^^^^^^^^^^^
+api-1  |   File "/usr/local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 3319, in raw_connection
+api-1  |     return self.pool.connect()
+api-1  |            ^^^^^^^^^^^^^^^^^^^
+api-1  |   File "/usr/local/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 448, in connect
+api-1  |     return _ConnectionFairy._checkout(self)
+api-1  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+api-1  |   File "/usr/local/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 1272, in _checkout
+api-1  |     fairy = _ConnectionRecord.checkout(pool)
+api-1  |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+api-1  |   File "/usr/local/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 712, in checkout
+api-1  |     rec = pool._do_get()
+api-1  |           ^^^^^^^^^^^^^^
+api-1  |   File "/usr/local/lib/python3.12/site-packages/sqlalchemy/pool/impl.py", line 178, in _do_get
+api-1  |     with util.safe_reraise():
+api-1  |          ^^^^^^^^^^^^^^^^^^^
+api-1  |   File "/usr/local/lib/python3.12/site-packages/sqlalchemy/util/langhelpers.py", line 122, in __exit__
+api-1  |     raise exc_value.with_traceback(exc_tb)
+api-1  |   File "/usr/local/lib/python3.12/site-packages/sqlalchemy/pool/impl.py", line 176, in _do_get
+api-1  |     return self._create_connection()
+api-1  |            ^^^^^^^^^^^^^^^^^^^^^^^^^
+api-1  |   File "/usr/local/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 389, in _create_connection
+api-1  |     return _ConnectionRecord(self)
+api-1  |            ^^^^^^^^^^^^^^^^^^^^^^^
+api-1  |   File "/usr/local/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 674, in __init__
+api-1  |     self.__connect()
+api-1  |   File "/usr/local/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 900, in __connect
+api-1  |     with util.safe_reraise():
+api-1  |          ^^^^^^^^^^^^^^^^^^^
+api-1  |   File "/usr/local/lib/python3.12/site-packages/sqlalchemy/util/langhelpers.py", line 122, in __exit__
+api-1  |     raise exc_value.with_traceback(exc_tb)
+api-1  |   File "/usr/local/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 896, in __connect
+api-1  |     self.dbapi_connection = connection = pool._invoke_creator(self)
+api-1  |                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+api-1  |   File "/usr/local/lib/python3.12/site-packages/sqlalchemy/engine/create.py", line 667, in connect
+api-1  |     return dialect.connect(*cargs_tup, **cparams)
+api-1  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+api-1  |   File "/usr/local/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 630, in connect
+api-1  |     return self.loaded_dbapi.connect(*cargs, **cparams)  # type: ignore[no-any-return]  # NOQA: E501
+api-1  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+api-1  |   File "/usr/local/lib/python3.12/site-packages/psycopg2/__init__.py", line 122, in connect
+api-1  |     conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+api-1  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+api-1  | sqlalchemy.exc.OperationalError: (psycopg2.OperationalError) connection to server at "db" (172.19.0.2), port 5432 failed: Connection refused
+api-1  |        Is the server running on that host and accepting TCP/IP connections?
+api-1  | 
+api-1  | (Background on this error at: https://sqlalche.me/e/20/e3q8)"
