@@ -245,3 +245,54 @@ http://localhost:8000/docs
 
 ```
 ```
+
+## Features
+
+- Create shortened URLs with automatically generated short codes
+- Support for custom URL aliases
+- Redirect shortened URLs to their original destination
+- Click tracking and analytics
+- URL expiration support
+- PostgreSQL database integration
+- Dockerized for consistent deployment
+- Redis caching for improved redirect performance
+- Interactive API documentation with Swagger UI
+
+### Tech Stack
+
+- Python
+- FastAPI
+- PostgreSQL
+- SQLAlchemy
+- Redis
+- Docker
+- Render
+
+## Redis Caching
+
+The API uses Redis to cache URL lookups and improve redirect performance.
+
+### How It Works
+
+1. A user visits a shortened URL.
+2. The application first checks Redis for the corresponding original URL.
+3. If the URL is found in Redis (cache hit), the user is redirected immediately without querying PostgreSQL.
+4. If the URL is not found (cache miss), the application retrieves it from PostgreSQL, stores it in Redis for future requests, and then redirects the user.
+
+### Benefits
+
+- Faster response times
+- Reduced database load
+- Improved scalability for frequently accessed URLs
+
+### Cache Configuration
+
+```python
+redis_client.set(
+    short_code,
+    url.original_url,
+    ex=3600
+)
+```
+
+Cached URLs remain in Redis for 1 hour before expiring automatically.
