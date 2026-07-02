@@ -30,7 +30,7 @@ Base.metadata.create_all(bind=engine)
 
 
 app = FastAPI(
-    title="URL Shortener API",
+    title="URL Shortener API (rivondave)",
     version="1.0.0"
 )
 
