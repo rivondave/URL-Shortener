@@ -1,6 +1,7 @@
 from fastapi import APIRouter
 from fastapi import Depends
 
+from fastapi.responses import RedirectResponse
 from sqlalchemy.orm import Session
 
 from app.core.database import get_db
@@ -13,6 +14,8 @@ from app.schemas.url import (
     URLCreate,
     URLResponse
 )
+
+from app.core.redis import redis_client
 
 from app.core.utils import (
     generate_short_code

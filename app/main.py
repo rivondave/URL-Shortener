@@ -26,6 +26,8 @@ from app.core.database import get_db
 
 from app.models.url import URL
 
+from app.core.redis import redis_client
+
 Base.metadata.create_all(bind=engine)
 
 
@@ -49,12 +51,11 @@ def redirect_url(
     short_code: str,
     db: Session = Depends(get_db)
 ):
+    cached_url = redis_client.get(short_code)
 
     url = (
         db.query(URL)
-        .filter(
-            URL.short_code == short_code
-        )
+        .filter(URL.short_code == short_code)
         .first()
     )
 
@@ -63,12 +64,10 @@ def redirect_url(
             status_code=404,
             detail="Short URL not found"
         )
-    
+
     if (
         url.expires_at
-        and
-        datetime.utcnow()
-        > url.expires_at
+        and datetime.utcnow() > url.expires_at
     ):
         raise HTTPException(
             status_code=410,
@@ -76,8 +75,16 @@ def redirect_url(
         )
 
     url.clicks += 1
-
     db.commit()
+
+    if cached_url:
+        return RedirectResponse(url=cached_url)
+
+    redis_client.set(
+        short_code,
+        url.original_url,
+        ex=3600
+    )
 
     return RedirectResponse(
         url=url.original_url
